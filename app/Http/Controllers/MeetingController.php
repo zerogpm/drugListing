@@ -8,6 +8,12 @@ use App\Http\Requests;
 
 class MeetingController extends Controller
 {
+
+    public function __construct()
+    {
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,18 +21,9 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        //
+        return 'it works index method';
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +33,11 @@ class MeetingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = $request->input('title');
+        $description = $request->input('description');
+        $time = $request->input('time');
+        $userId = $request->input('userID');
+        return 'it works store method';
     }
 
     /**
@@ -47,18 +48,7 @@ class MeetingController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return 'it works show method';
     }
 
     /**
@@ -70,7 +60,11 @@ class MeetingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $title = $request->input('title');
+        $description = $request->input('description');
+        $time = $request->input('time');
+        $userId = $request->input('userID');
+        return 'it works update method';
     }
 
     /**
@@ -81,6 +75,6 @@ class MeetingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 'it works destroy method';
     }
 }

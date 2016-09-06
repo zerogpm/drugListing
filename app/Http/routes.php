@@ -22,7 +22,7 @@ Route::get('/about', function() {
 
 Route::group(['prefix' => 'api/v1'], function() {
     Route::resource('meeting', 'MeetingController', [
-        'expect' => ['edit', 'create']
+        'except' => ['edit', 'create']
     ]);
 
     Route::resource('meeting/registration', 'RegistrationController', [

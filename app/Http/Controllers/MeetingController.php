@@ -21,7 +21,25 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        return 'it works index method';
+        $meeting = [
+            'title' => 'Title',
+            'description' => 'description',
+            'time' => 'Time',
+            'user_id' => 'User Id',
+            'view_meeting' => [
+                'href' => 'api/v1/meeting/1',
+                'method' => 'GET'
+            ]
+        ];
+
+        $response = [
+            'msg' => 'Meeting created',
+            'meeting' => [
+                $meeting,
+                $meeting
+            ]
+        ];
+        return response()->json($response, 200);
     }
 
 
@@ -33,11 +51,35 @@ class MeetingController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'time' => 'required|date_format:YmdHie',
+            'userID' => 'required'
+        ]);
+
         $title = $request->input('title');
         $description = $request->input('description');
         $time = $request->input('time');
         $userId = $request->input('userID');
-        return 'it works store method';
+
+        $meeting = [
+            'title' => $title,
+            'description' => $description,
+            'time' => $time,
+            'user_id' => $userId,
+            'view_meeting' => [
+                'href' => 'api/v1/meeting/1',
+                'method' => 'GET'
+            ]
+        ];
+
+        $response = [
+          'msg' => 'Meeting created',
+          'meeting' => $meeting
+        ];
+        return response()->json($response, 201);
     }
 
     /**
@@ -75,6 +117,15 @@ class MeetingController extends Controller
      */
     public function destroy($id)
     {
-        return 'it works destroy method';
+
+        $response = [
+            'msg' => 'Meeting deleted',
+            'create' => [
+                'href' => 'api/vi/meeting',
+                'method' => 'POST',
+                'params' => 'title, description, time'
+            ]
+        ];
+        return response()->json($response, 200);
     }
 }

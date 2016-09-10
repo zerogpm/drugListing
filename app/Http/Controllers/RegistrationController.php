@@ -9,6 +9,10 @@ use App\Http\Requests;
 
 class RegistrationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt.auth');
+    }
     /**
      * Store a newly created resource in storage.
      *
